@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AdminController!{% endblock %}
+
+{% block body %}
+<h4>{{ lastName }}</h4>
+    <p>
+        <a href="{{ path('app_admin_music_index') }}">Список музыки</a>
+        <br>
+        <a href="{{ path('app_index') }}">Главная</a>
+    </p>
+{% endblock %}

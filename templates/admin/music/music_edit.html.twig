@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit a music{% endblock %}
+
+{% block body %}
+    {{ form_start(MusicAdd) }}
+    {{ form_row(MusicAdd.name) }}
+    {{ form_row(MusicAdd.artist) }}
+    {{ form_row(MusicAdd.file) }}
+    <button type="submit" class="btn">Submit</button>
+    {{ form_end(MusicAdd) }}
+{% endblock %}

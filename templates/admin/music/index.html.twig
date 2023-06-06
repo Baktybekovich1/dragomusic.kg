@@ -1,0 +1,115 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello IndexController!{% endblock %}
+
+{% block stylesheets %}
+    <link href="/public/css/muz_list.css" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+    <a style="margin: 30px" href="{{ path('app_admin_music_add') }}" class="vos">Добавить трек</a>
+    <div class="wrapper">
+        <div class="main">
+            <div class="music-list">
+                <h2>Список песен</h2>
+                <table><thead>
+                    <th>Название</th>
+                    <th>Исполнитель</th>
+                    <th>Дата</th>
+                    <th>Воспроизвести</th>
+                    <th>Редактировать</th>
+                    <th>Удалить</th>
+                    </thead>
+                    <tbody>
+                    {% for music in musics %}
+                        <tr>
+                            <td>{{ music.name }}</td>
+                            <td>{{ music.artist }}</td>
+                            <td>{{ music.dateString }}</td>
+                            <td>
+                                <a type="button" href="{{ path('app_admin_music_index',{'muz': music.id}) }}"
+                                   class="delete-button">▶</a></td>
+                            <div class="actions">
+                                <td><a class="edit-button" href="{{ path('app_admin_music_edit', {'id': music.id}) }}">  </a></td>
+                                <td><a class="delete-button" href="{{ path('app_admin_music_delete', {'id': music.id}) }}"></a></td>
+                            </div>
+
+                        </tr>
+                    {% endfor %}
+                    </tbody></table></div>
+        </div>
+        <footer>
+            {% if muzname != null %}
+                <div class="player">
+                    <h2>Проигрыватель</h2>
+                    <audio controls>
+                        <source src="/uploads/{{ muzname.text }}" type="audio/mpeg">
+                    </audio>
+                </div>
+            {% else %}
+                <h2>Музыка не выбрана</h2>
+            {% endif %}
+            <p>&copy; 2023 Моя Музыка. Все права защищены.</p>
+        </footer>
+    </div>
+    {# =========================================================================================== #}
+
+
+
+    {#    <a style="margin: 30px" href="{{ path('app_admin_music_add') }}" class="vos">Добавить трек</a> #}
+
+
+    {#    {% if muzname != null %} #}
+    {#        <audio controls autoplay> #}
+    {#            <source src="/uploads/{{ muzname.text }}" type="audio/ogg; codecs=vorbis"> #}
+    {#            <source src="/uploads/{{ muzname.text }}" type="audio/mpeg"> #}
+    {#            Тег audio не поддерживается вашим браузером. #}
+    {#            <a href="/uploads/{{ muzname.text }}">Скачайте музыку</a>. #}
+    {#        </audio> #}
+    {#    {% else %} #}
+    {#        <h2>Музыка не выбрана</h2> #}
+
+    {#    {% endif %} #}
+
+
+    {#    <style> #}
+    {#        table { #}
+    {#            border: 1px solid #eee; #}
+    {#            table-layout: fixed; #}
+    {#            width: 100%; #}
+    {#            margin-bottom: 20px; #}
+    {#        } #}
+
+    {#        table th { #}
+    {#            font-weight: bold; #}
+    {#            padding: 5px; #}
+    {#            background: #efefef; #}
+    {#            border: 1px solid #dddddd; #}
+    {#        } #}
+
+    {#        table td { #}
+    {#            padding: 5px 10px; #}
+    {#            border: 1px solid #eee; #}
+    {#            text-align: center; #}
+    {#        } #}
+
+    {#        table tbody tr:nth-child(odd) { #}
+    {#            background: #fff; #}
+    {#        } #}
+
+    {#        table tbody tr:nth-child(even) { #}
+    {#            background: #F7F7F7; #}
+    {#        } #}
+
+    {#        .vos { #}
+    {#            text-decoration: none; #}
+    {#            color: black; #}
+    {#            border: #999999 1px solid; #}
+    {#            padding: 0 5px 0 5px; #}
+    {#        } #}
+
+    {#        /*----------------------------------------------------------------------*/ #}
+
+    {#    </style> #}
+
+{% endblock %}

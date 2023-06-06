@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+{% block title %} Index page{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="public/css/index.css">
+{% endblock %}
+{% block body %}
+
+
+    <div class="wrapper">
+        <header>
+            <h1>{{ getLastName }}</h1>
+            <h1>Добро пожаловать на мой сайт!</h1>
+            <h1><a href="{{ path('app_index_music') }}">Список музыки</a></h1>
+        </header>
+
+        <section  class="content-section">
+
+            <div class="content">
+                <h2>О проектах</h2>
+                <p>Здесь я рассказываю о своих последних проектах и достижениях.</p>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2023 Мой Сайт. Все права защищены.</p>
+        </footer>
+    </div>
+{% endblock %}
