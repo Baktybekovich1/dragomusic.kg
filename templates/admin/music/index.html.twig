@@ -12,7 +12,8 @@
         <div class="main">
             <div class="music-list">
                 <h2>Список песен</h2>
-                <table><thead>
+                <table>
+                    <thead>
                     <th>Название</th>
                     <th>Исполнитель</th>
                     <th>Дата</th>
@@ -30,19 +31,23 @@
                                 <a type="button" href="{{ path('app_admin_music_index',{'muz': music.id}) }}"
                                    class="delete-button">▶</a></td>
                             <div class="actions">
-                                <td><a class="edit-button" href="{{ path('app_admin_music_edit', {'id': music.id}) }}">  </a></td>
-                                <td><a class="delete-button" href="{{ path('app_admin_music_delete', {'id': music.id}) }}"></a></td>
+                                <td><a class="edit-button"
+                                       href="{{ path('app_admin_music_edit', {'id': music.id}) }}"> </a></td>
+                                <td><a class="delete-button"
+                                       href="{{ path('app_admin_music_delete', {'id': music.id}) }}"></a></td>
                             </div>
 
                         </tr>
                     {% endfor %}
-                    </tbody></table></div>
+                    </tbody>
+                </table>
+            </div>
         </div>
         <footer>
             {% if muzname != null %}
                 <div class="player">
                     <h2>Проигрыватель</h2>
-                    <audio controls>
+                    <audio controls autoplay>
                         <source src="/uploads/{{ muzname.text }}" type="audio/mpeg">
                     </audio>
                 </div>
